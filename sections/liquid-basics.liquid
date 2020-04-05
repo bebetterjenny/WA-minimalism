@@ -1,0 +1,55 @@
+<div class="page-width">
+    <div class="section-header text-center">
+        <h2>
+            {{ section.settings.title }}
+        </h2>
+    </div>
+    <ul class="grid grid--uniform grid--view-items">
+        {% for block in section.blocks %}
+            <li class="grid__item grid__item--featured-collections small--one-half medium-up--one-third">
+                <div class="grid-view-item product-card">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" style="width: 200px;"/>
+                    <p>{{ block.settings.block-text }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% schema %}
+    {   
+        "name": "Liquid Basic Example",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Liquid Basic Example"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Custom Blocks",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "block-text",
+                        "label": "Block Text"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "image",
+                        "label": "Pick an Image!"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Liquid Basic Example",
+                "category": "Image"
+            }
+        ]
+    }
+{% endschema %}
