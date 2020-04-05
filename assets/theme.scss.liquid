@@ -2655,7 +2655,7 @@ textarea {
   border: 1px solid $color-border;
   background: $color-bg;
   left: -1px;
-  top: 41px;
+  top: 25px;
 
   .site-nav__link {
     padding: 4px 15px 5px;
@@ -2668,6 +2668,11 @@ textarea {
   li {
     display: block;
   }
+}
+
+.site-nav--has-dropdown:hover .site-nav__dropdown,
+.site-nav--has-dropdown:focus .site-nav__dropdown {
+  display: block;
 }
 
 .site-nav__dropdown--right:not(.site-nav__dropdown--centered) {
