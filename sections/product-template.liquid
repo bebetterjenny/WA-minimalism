@@ -121,9 +121,8 @@
 
     <div class="grid__item {{ product_description_width }}">
       <div class="product-single__meta">
-
         <h1 class="product-single__title">{{ product.title }}</h1>
-
+        {% if customer %}
           <div class="product__price">
             {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
           </div>
@@ -225,7 +224,8 @@
               </div>
             </div>
           {% endform %}
-        </div>
+        {% endif %}
+      </div>
 
         {%- comment -%}
           Live region for announcing updated price and availability to screen readers
@@ -244,13 +244,19 @@
           role="alert"
           aria-hidden="true"
         >{{ 'products.product.loader_label' | t }}</p>
-
+        {% unless customer %}
+          <div class="product-single__description rte">
+            <a href="{{ routes.account_login_url }}">Login</a> to see the price!
+          </div>
+        {% endunless %}
         <div class="product-single__description rte">
           {{ product.description }}
         </div>
-        <div class="product-single__description rte">
-          {{ product.metafields.global.price }}
-        </div>
+        {% if customer %}
+          <div class="product-single__description rte">
+            {{ product.metafields.global.price }}
+          </div>
+        {% endif %}
 
         {% if section.settings.show_share_buttons %}
           {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
