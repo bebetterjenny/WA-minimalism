@@ -10,13 +10,13 @@
         {% form 'create_customer', id: formId, novalidate: 'novalidate' %}
           {% include 'form-status', form: form, form_id: formId %}
 
-          <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }}</label>
-          <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name">
+          <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }} *</label>
+          <input type="text" name="customer[first_name]" id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocomplete="given-name" aria-required="true">
 
-          <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }}</label>
-          <input type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name">
+          <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }} *</label>
+          <input type="text" name="customer[last_name]" id="{{ formId }}-LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name" aria-required="true">
 
-          <label for="{{ formId }}-email">{{ 'customer.register.email' | t }}</label>
+          <label for="{{ formId }}-email">{{ 'customer.register.email' | t }} *</label>
           <input
             type="email"
             name="customer[email]"
@@ -41,7 +41,7 @@
             </span>
           {%- endif -%}
 
-          <label for="{{ formId }}-password">{{ 'customer.register.password' | t }}</label>
+          <label for="{{ formId }}-password">{{ 'customer.register.password' | t }} *</label>
           <input
             type="password"
             name="customer[password]"
@@ -60,6 +60,79 @@
               <span>{{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
             </span>
           {%- endif -%}
+
+          <label for="{{ formId }}-CompanyName">{{ 'customer.register.company_name' | t }} *</label>
+          <input
+            type="text"
+            id="{{ formId }}-CompanyName"
+            name="customer[note][company_name]"
+            aria-required="true"
+          />
+
+          <label for="{{ formId }}-BusinessType">{{ 'customer.register.business_type' | t }} *</label>
+          <select 
+            id="{{ formId }}-BusinessType" 
+            name="customer[note][business_type]"
+            aria-required="true"
+          >
+            <option value = null>{{ 'customer.register.select' | t }}</option>
+            <option value = "E-commerce">E-commerce</option>
+            <option value = "Wholesaler">Wholesaler</option>
+            <option value = "Retail Store">Retail Store</option>
+            <option value = "Distributor">Distributor</option>
+            <option value = "Vendor">Vendor</option>
+            <option value = "Other">Other</option>
+          </select>
+
+          <label for="{{ formId }}-JobTitle">{{ 'customer.register.job_title' | t }} *</label>
+          <select 
+            id="{{ formId }}-JobTitle" 
+            name="customer[note][job_title]"
+            aria-required="true"
+          >
+            <option value = null>{{ 'customer.register.select' | t }}</option>
+            <option value = "Athorized Buyer">Athorized Buyer</option>
+            <option value = "Owner/Co-owner">Owner/Co-owner</option>
+            <option value = "Manager">Manager</option>
+            <option value = "Other">Other</option>
+          </select>
+
+          <label for="{{ formId }}-CompanyPhone">{{ 'customer.register.company_phone' | t }} *</label>
+          <input
+            type="text"
+            id="{{ formId }}-CompanyPhone"
+            name="customer[note][company_phone]"
+            aria-required="true"
+          />
+
+          <label for="{{ formId }}-CompanyId">{{ 'customer.register.company_id' | t }}</label>
+          <input
+            type="text"
+            id="{{ formId }}-CompanyId"
+            name="customer[note][company_id]"
+          />
+
+          <label for="{{ formId }}-CompanyLocationNumber">{{ 'customer.register.company_location_number' | t }} *</label>
+          <input
+            type="number"
+            id="{{ formId }}-CompanyLocationNumber"
+            name="customer[note][company_location_number]"
+            aria-required="true"
+          />
+
+          <label for="{{ formId }}-HowFind">{{ 'customer.register.how_find' | t }} *</label>
+          <select 
+            id="{{ formId }}-HowFind" 
+            name="customer[note][how_find]"
+            aria-required="true"
+          >
+            <option value = null>{{ 'customer.register.select' | t }}</option>
+            <option value = "Emails">Emails</option>
+            <option value = "Referral">Referral</option>
+            <option value = "Google Ads">Google Ads</option>
+            <option value = "Internet">Internet</option>
+            <option value = "Other">Other</option>
+          </select>
 
           <p class="text-center">
             <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">

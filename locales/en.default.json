@@ -324,12 +324,20 @@
       "submit": "Reset Password"
     },
     "register": {
+      "select": "---Select---",
       "title": "Create Account",
       "first_name": "First Name",
       "last_name": "Last Name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "submit": "Create",
+      "company_name": "Legitimate Business Name",
+      "business_type": "Business Type",
+      "job_title": "Job Title",
+      "company_phone": "Business Phone Number",
+      "company_id": "Federal Tax ID",
+      "company_location_number": "How many store locations does your company have?",
+      "how_find": "How did you find us?"
     }
   },
   "homepage": {
